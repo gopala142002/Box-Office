@@ -1,5 +1,5 @@
-// const baseURL="https://api.tvmaze.com";
-const apiGet=async ()=>{
+const baseURL="https://api.tvmaze.com";
+const apiGet=async (queryString)=>{
     // throw new Error("Something bad happened");
     const data=await fetch(`${baseURL}${queryString}`);
     const res=await data.json();
