@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const ActorCard=({name,imgURL,gender,country,birthday,deathday})=>{
+const ActorCard=({name,imgURL,gender,id,country,birthday,deathday})=>{
     // const summaryStripped=summary?summary.split(" ").slice(0,10).join(' ').replace(/<.+?>/g,''):"No descriptipn";
     return(
         <div>
@@ -13,7 +13,7 @@ const ActorCard=({name,imgURL,gender,country,birthday,deathday})=>{
             <p>{deathday ? `Died ${deathday}`:'Alive'}</p>
             {/* <p>{summaryStripped}</p> */}
             <div>
-                <Link to="/">Read more</Link>
+                <Link to={`/show/${id}`}>Read more</Link>
                 <button type="button">Star me</button>
             </div>
         </div>

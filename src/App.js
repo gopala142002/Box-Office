@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 // import Contact from './pages/Contact';
 import Starred from "./pages/Starred";
 import MainLayout from "./components/MainLayout";
+import Show from "./pages/Show";
 const App = () => {
   return (
     <>
@@ -13,6 +14,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/Starred" element={<Starred />} />
           {/* <Route/> */}
+          <Route path="/show/:showId" element={<Show/>}/>
           <Route
             path="*"
             element={
