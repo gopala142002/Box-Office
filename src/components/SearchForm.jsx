@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState} from "react";
 const SearchForm = ({ onSearch }) => {
   const [searchStr, setSearchStr] = useState("");
   const [searchOption, setSearchOption] = useState("shows");
   const onSearchInput = (ev) => {
     setSearchStr(ev.target.value);
   };
-  console.log(searchOption);
+  // console.log(searchOption);
   const onRadioChange = (ev) => {
     setSearchOption(ev.target.value);
   };
   const onSubmit = (ev) => {
-    ev.preventDefault();
+    ev.preventDefault();  
     const options = [searchStr, searchOption];
     onSearch(options);
   };
