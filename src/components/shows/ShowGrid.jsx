@@ -1,6 +1,7 @@
 import ShowCard from "./ShowCard";
 
 const ShowGrid = ({ shows }) => {
+  console.log(shows[0]);
   return (
     <div>
       {shows.map((data) => (
