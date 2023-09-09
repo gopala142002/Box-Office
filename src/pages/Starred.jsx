@@ -22,6 +22,6 @@ const Starred=()=>{
   {
     return <div>Error occurred {starredShowsError}</div>
   }
-  return <div>Shows are loading</div>
+  return <div>Shows are loading </div>
 }
 export default Starred;
