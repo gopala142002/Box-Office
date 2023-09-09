@@ -11,12 +11,13 @@ const App = () => {
     <>
     <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <MainLayout />
+          {/* <MainLayout /> */}
           <Routes>
-            {/* <Route element={<MainLayout/>}/> */}
-            <Route path="/" element={<Home />} />
-            <Route path="/Starred" element={<Starred />} />
-            {/* <Route/> */}
+            <Route path="/" element={<MainLayout/>}>
+              <Route path="/" element={<Home />} />
+              <Route path="/Starred" element={<Starred />} />
+              {/* <Route/> */}
+            </Route>
             <Route path="/show/:showId" element={<Show/>}/>
             <Route
               path="*"

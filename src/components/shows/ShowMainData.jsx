@@ -1,7 +1,7 @@
 const ShowMainData=({image,name,rating,summary,genres})=>{
     return(
         <div>
-            <img src={image?image.original:"imageNotFound.png"} alt="" />
+            <img src={image?image.original:'/imgNotFound.png'} alt="" />
             <div>
                 <h1>{name}</h1>
                 <div>{rating.average || 'N/A'}</div>
