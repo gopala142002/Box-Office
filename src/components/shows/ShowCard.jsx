@@ -1,25 +1,44 @@
 // import { FaStar } from "@react-icons/all-files/fa/FaStar";
+import { useRef } from "react";
 import styled from "styled-components";
-import { SearchCard,SearchImgWrapper } from "../common/SearchCard";
+import { SearchCard, SearchImgWrapper } from "../common/SearchCard";
 import { StarIcon } from "../common/StarIcon";
-const ShowCard = ({ name, imgURL, id, summary, onStarMeClick ,isStarred}) => {
+const ShowCard = ({ name, imgURL, id, summary, onStarMeClick, isStarred }) => {
   const summaryStripped = summary
-    ? summary.split(" ").slice(0, 10).join(" ").replace(/<.+?>/g, "")+'...'
+    ? summary.split(" ").slice(0, 10).join(" ").replace(/<.+?>/g, "") + "..."
     : "No descriptipn";
+  const starBtnRef = useRef();
+  const handleStarClick=()=>{
+    onStarMeClick(id);
+    const startBtnEl=starBtnRef.current;
+    if(!starBtnRef)
+      return;
+    if(isStarred){
+      startBtnEl.classList.remove('animate');
+    }
+    else{
+      startBtnEl.classList.add('animate');
+    }
+    console.log(starBtnRef.current);
+  }
   return (
     <SearchCard>
       <SearchImgWrapper>
         <img src={imgURL} alt={name} />
       </SearchImgWrapper>
-      <h1>{name}</h1>
+      <h1>{name}</h1>  
       <p>{summaryStripped}</p>
       <ActionSection>
         <a href={`/show/${id}`} target="_blank" rel="noreferrer">
           Read more
         </a>
-        <StarBtn type="button" onClick={() => onStarMeClick(id)}>
+        <StarBtn
+          ref={starBtnRef}
+          type="button"
+          onClick={handleStarClick}
+        >
           {/* {isStarred?'Unstar me':'Star me '} */}
-          <StarIcon active={isStarred}/>
+          <StarIcon active={isStarred} />
         </StarBtn>
       </ActionSection>
     </SearchCard>
@@ -52,5 +71,21 @@ const StarBtn = styled.button`
   align-items: center;
   &:hover {
     cursor: pointer;
+  }
+  &.animate {
+    ${StarIcon} {
+      animation: increase 0.75s ease-in forwards;
+      @keyframes increase {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(3) rotate(45deg);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
   }
 `;
