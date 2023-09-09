@@ -1,5 +1,5 @@
 // import { FaStar } from "@react-icons/all-files/fa/FaStar";
-const ShowCard = ({ name, imgURL, id, summary, onStarMeClick }) => {
+const ShowCard = ({ name, imgURL, id, summary, onStarMeClick ,isStarred}) => {
   const summaryStripped = summary
     ? summary.split(" ").slice(0, 10).join(" ").replace(/<.+?>/g, "")
     : "No descriptipn";
@@ -15,7 +15,7 @@ const ShowCard = ({ name, imgURL, id, summary, onStarMeClick }) => {
           Read more
         </a>
         <button type="button" onClick={() => onStarMeClick(id)}>
-          Star me
+          {isStarred?'Unstar me':'Star me '}
         </button>
       </div>
     </div>
