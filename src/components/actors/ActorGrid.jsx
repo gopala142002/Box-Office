@@ -3,14 +3,15 @@ import { useStarredShows } from "../../lib/useStarredShows";
 import { FlexGrid } from "../common/FlexGrid";
 const ActorGrid = ({ actors }) => {
   const [starredShows,dispatchStarred]=useStarredShows();
-  const onStarMeClick = (showId) => {
-    const isStarred = starredShows.includes(showId);
+  const onStarMeClick = (id) => {
+    const isStarred = starredShows.includes(id);
     if (isStarred) {
-      dispatchStarred({ type: "UNSTAR", showId });
+      dispatchStarred({ type: "UNSTAR", id });
     } else {
-      dispatchStarred({ type: "STAR", showId });
+      dispatchStarred({ type: "STAR", id });
     }
   };
+  // console.log(dispatchStarred);
   return (
     <FlexGrid>
       {actors.map((data) => (
@@ -26,10 +27,9 @@ const ActorGrid = ({ actors }) => {
             data.person.image ? data.person.image.medium : "/imgNotFound.png"
           }
          summary={data.person.summary}
-         isStarred={starredShows.includes(data.show.id)}
+         isStarred={starredShows.includes(data.person.id)}
          onStarMeClick={onStarMeClick}
         />
-        // console.log(data.person.image.medium)
       ))}
     </FlexGrid>
   );
